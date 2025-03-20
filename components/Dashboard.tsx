@@ -97,6 +97,10 @@ export default function Dashboard() {
       {/* Engineers Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {paginatedEngineers.map((engineer) => (
+             <a 
+             href={`/engineers/${engineer.engineerId}`}
+             key={engineer.engineerId}
+           >
           <div
             key={engineer.engineerId}
             className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
@@ -159,6 +163,7 @@ export default function Dashboard() {
               Updated on: {engineer.updatedAt?.$date}
             </p>
           </div>
+          </a>
         ))}
       </div>
 
