@@ -51,7 +51,12 @@ export default function Dashboard() {
             <Image src="/mail.png" alt="Search" width={30} height={30} />
           </button>
           <button className="p-2 bg-white rounded-full hover:bg-gray-200">
-          <Image src="/notification.png" alt="Search" width={28} height={25} />
+            <Image
+              src="/notification.png"
+              alt="Search"
+              width={28}
+              height={25}
+            />
           </button>
         </div>
         <div className="flex items-center gap-4">
@@ -76,9 +81,7 @@ export default function Dashboard() {
           <p className="text-gray-600">Lorem ipsum simple content</p>
         </div>
         {/* Date Range Picker */}
-        <div>
-          April 11 - April 24
-        </div>
+        <div>April 11 - April 24</div>
         <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
           Add Engineer
         </button>
@@ -97,72 +100,87 @@ export default function Dashboard() {
       {/* Engineers Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {paginatedEngineers.map((engineer) => (
-             <a 
-             href={`/engineers/${engineer.engineerId}`}
-             key={engineer.engineerId}
-           >
-          <div
+          <a
+            href={`/engineers/${engineer.engineerId}`}
             key={engineer.engineerId}
-            className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
           >
-            {/* Engineer Info */}
-            <div className="flex items-center mb-4">
-              <Image
-                src="/boy.png"
-                alt="Profile"
-                width={40}
-                height={40}
-                className="rounded-full"
-              />
-              <div>
-                <h2 className="text-lg font-bold text-gray-800">
-                  {engineer.engineerName}
-                </h2>
-                <p className="text-sm text-gray-600">
-                  {typeof engineer.engineerContact === "string"
-                    ? engineer.engineerContact
-                    : engineer.engineerContact.$numberLong}
-                </p>
-                {/* <p className="text-sm text-gray-600">
-                  {engineer.engineerSalary}
-                </p> */}
-              </div>
-            </div>
-            <button onClick={() => router.push(`/engineers/${engineer.engineerId}`)}>
-              {/* Location & Status */}
-              <p className="text-sm text-gray-600 mb-2">
-                {engineer.engineerLocation}
-              </p>
-              <span
-                className={`inline-block px-3 py-1 text-sm font-medium rounded ${
-                  engineer.engineerStatus === "Active"
-                    ? "bg-green-100 text-green-800"
-                    : "bg-red-100 text-red-800"
-                }`}
-              >
-                {engineer.engineerStatus}
-              </span>
-            </button>
-            {/* Additional Info */}
-            <div className="mt-4">
-              <p className="text-sm text-gray-500">Documents:</p>
-              <div className="flex gap-2 mt-1">
-                {["PAN", "Aadhar", "Police Verification"].map((doc) => (
+            <div
+              key={engineer.engineerId}
+              className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow flex flex-col"
+            >
+              {/* Engineer Info */}
+              <div className="flex flex-row justify-between">
+                <div className="details">
+                  <h2 className="text-2xl font-bold text-gray-800">
+                    {engineer.engineerName}
+                  </h2>
+                  <div className="flex flex-row contact pb-2">
+                    <Image
+                      src="/telephone.png"
+                      alt="Profile"
+                      width={15}
+                      height={5}
+                      className="rounded-full pr-1"
+                    />
+                    <p className="text-sm text-gray-600">
+                      {typeof engineer.engineerContact === "string"
+                        ? engineer.engineerContact
+                        : engineer.engineerContact.$numberLong}
+                    </p>
+                  </div>
+                  <div className="flex flex-row location">
+                    <Image
+                      src="/location.png"
+                      alt="Profile"
+                      width={15}
+                      height={5}
+                      className="rounded-full pr-1"
+                    />
+                    <p className="text-sm text-gray-600">
+                      {engineer.engineerLocation}
+                    </p>
+                  </div>
+                </div>
+                <div className="image flex flex-col gap-2 items-center mb-4">
+                  <Image
+                    src="/boy.png"
+                    alt="Profile"
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                  />
                   <span
-                    key={doc}
-                    className="px-2 py-1 text-xs bg-green-100 text-green-700 rounded"
-                  >
-                    {doc}
-                  </span>
-                ))}
+                  className={`inline-block px-3 py-1 text-sm font-medium rounded ${
+                    engineer.engineerStatus === "Active"
+                      ? "bg-green-100 text-green-800"
+                      : "bg-red-100 text-red-800"
+                  }`}
+                >
+                  {engineer.engineerStatus}
+                </span>
+                </div>
               </div>
-            </div>
 
-            {/* Updated Info */}
-            <p className="mt-4 text-xs text-gray-400">
-              Updated on: {engineer.updatedAt?.$date}
-            </p>
-          </div>
+              {/* Additional Info */}
+              <div className="mt-4">
+                <p className="text-sm text-gray-500">Documents:</p>
+                <div className="flex gap-2 mt-1">
+                  {["PAN", "Aadhar", "Police Verification"].map((doc) => (
+                    <span
+                      key={doc}
+                      className="px-2 py-1 text-xs bg-green-100 text-green-700 rounded"
+                    >
+                      {doc}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Updated Info */}
+              <p className="mt-4 text-xs text-gray-400">
+                Updated at: {engineer.updatedAt?.$date}
+              </p>
+            </div>
           </a>
         ))}
       </div>
