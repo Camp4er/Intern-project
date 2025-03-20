@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { engineerData } from "@/data/engineers";
-import { MdEmail, MdNotifications } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -38,7 +38,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
+    <div className="p-6 min-h-screen bg-gray-100 rounded">
       {/* Navbar */}
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-4">
@@ -47,18 +47,20 @@ export default function Dashboard() {
             placeholder="Search..."
             className="p-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
           />
-          <button className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
-            {/* <MdEmail size={20} /> */}
+          <button className="p-2 bg-white rounded-full hover:bg-gray-200">
+            <Image src="/mail.png" alt="Search" width={30} height={30} />
           </button>
-          <button className="p-2 bg-gray-100 rounded-full hover:bg-gray-200">
-            {/* <MdNotifications size={20} /> */}
+          <button className="p-2 bg-white rounded-full hover:bg-gray-200">
+          <Image src="/notification.png" alt="Search" width={28} height={25} />
           </button>
         </div>
         <div className="flex items-center gap-4">
-          <img
-            src="/default-avatar.png"
+          <Image
+            src="/profile.png"
             alt="Profile"
-            className="w-10 h-10 rounded-full"
+            width={40}
+            height={40}
+            className="rounded-full"
           />
           <div>
             <p className="font-semibold">Ankit Sethiya</p>
