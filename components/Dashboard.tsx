@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 import { engineerData } from "@/data/engineers";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 export default function Dashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
-  const router = useRouter();
 
   const totalPages = Math.ceil(engineerData.length / itemsPerPage);
 
