@@ -103,10 +103,12 @@ export default function Dashboard() {
           >
             {/* Engineer Info */}
             <div className="flex items-center mb-4">
-              <img
-                src="/default-avatar.png"
-                alt={engineer.engineerName}
-                className="w-12 h-12 rounded-full mr-4"
+              <Image
+                src="/boy.png"
+                alt="Profile"
+                width={40}
+                height={40}
+                className="rounded-full"
               />
               <div>
                 <h2 className="text-lg font-bold text-gray-800">
