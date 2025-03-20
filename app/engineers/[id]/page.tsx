@@ -5,9 +5,12 @@ import { engineerData } from "@/data/engineers";
 import CollapsibleSection from "@/components/CollapsibleSection";
 import PasswordMask from "@/components/PasswordMask";
 import Image from "next/image";
+import { use } from "react";
 
-export default function EngineerPage({ params }: { params: { id: string } }) {
-  const engineer = engineerData.find((e) => e.engineerId === Number(params.id));
+export default function EngineerPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
+
+  const engineer = engineerData.find((e) => e.engineerId === Number(id));
 
   if (!engineer) return notFound();
 
@@ -60,9 +63,9 @@ export default function EngineerPage({ params }: { params: { id: string } }) {
       {/* Documents Section */}
       <CollapsibleSection title="Documents">
         <div className="flex gap-4 overflow-x-auto py-2">
-          <DocumentItem label="Pan Card" imageUrl="/pan-card.jpg" />
+          <DocumentItem label="Pan Card" imageUrl="/pan-card.webp" />
           <DocumentItem label="Aadhar Card" imageUrl="/aadhar-card.jpg" />
-          <DocumentItem label="Police Verification" imageUrl="/police-verification.jpg" />
+          <DocumentItem label="Police Verification" imageUrl="/police-verification.png" />
         </div>
       </CollapsibleSection>
 
@@ -119,7 +122,7 @@ function DocumentItem({
         alt={label}
         width={160}
         height={96}
-        className="object-cover"
+        className="object-cover shadow-sm filter blur-xs"
       />
       <span className="absolute bottom-1 left-1 bg-yellow-500 text-white text-xs px-2 py-[2px] rounded-full">
         {label}
