@@ -45,7 +45,7 @@ export default function Dashboard() {
           <input
             type="text"
             placeholder="Search..."
-            className="p-2 border rounded-lg focus:outline-none focus:ring focus:ring-green-300"
+            className="p-2 rounded-lg bg-white focus:outline-none"
           />
           <button className="p-2 bg-white rounded-full hover:bg-gray-200">
             <Image src="/mail.png" alt="Search" width={30} height={30} />
@@ -81,20 +81,24 @@ export default function Dashboard() {
           <p className="text-gray-600">Lorem ipsum simple content</p>
         </div>
         {/* Date Range Picker */}
-        <div>April 11 - April 24</div>
+        
         <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
           Add Engineer
         </button>
       </div>
 
       {/* Search Bar */}
-      <div className="mb-6">
+      <div className="mb-6 flex flex-row justify-between">
         <input
           type="text"
           placeholder="Search by ID, name, or others..."
-          className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-green-300"
+          className="w-[40%] p-3 border border-gray-300 bg-white rounded focus:outline-none focus:ring focus:ring-green-300"
           onChange={(e) => setSearchQuery(e.target.value)}
         />
+        <div className="px-3 py-2 bg-white rounded flex flex-row gap-2">
+            {/* <Image src="/check-mark.png" alt="calendar" width={15} height={0}/> */}
+            <p className="text-black font-bold">April 11 - April 24</p>
+        </div>
       </div>
 
       {/* Engineers Grid */}
